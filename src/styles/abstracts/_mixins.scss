@@ -1,0 +1,55 @@
+// Helper Functions
+@function get-color($name) {
+  @return map-get($colors, $name);
+}
+
+@function get-spacing($name) {
+  @return map-get($spacing, $name);
+}
+
+@function get-font-size($name) {
+  @return map-get($font-sizes, $name);
+}
+
+@function get-font-weight($name) {
+  @return map-get($font-weights, $name);
+}
+
+@function get-shadow($name) {
+  @return map-get($shadows, $name);
+}
+
+@function get-border-radius($name) {
+  @return map-get($border-radius, $name);
+}
+
+// Media Query Mixins
+@mixin media-down($breakpoint) {
+  @media (max-width: (map-get($breakpoints, $breakpoint) - 1px)) {
+    @content;
+  }
+}
+
+// Layout Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin container($max-width: 1200px) {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 get-spacing(lg);
+
+  @include media-down(md) {
+    padding: 0 get-spacing(md);
+  }
+}
+
+// Typography Mixins
+@mixin text($size: base, $weight: regular, $line-height: normal) {
+  font-size: get-font-size($size);
+  font-weight: map-get($font-weights, $weight);
+  line-height: map-get($line-heights, $line-height);
+}

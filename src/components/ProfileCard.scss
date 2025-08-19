@@ -1,0 +1,215 @@
+@import '../styles/abstracts';
+
+.profile-card {
+  max-width: 600px;
+  margin: 50px auto;
+  padding-bottom: 30px;
+  width: 100%;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: get-shadow(md);
+  border: 1px solid get-color(gray-200);
+
+  [data-theme='dark'] & {
+    border: 1px solid get-color(gray-600);
+    box-shadow: none;
+  }
+
+  &__header {
+    @include flex-center;
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 20px;
+    color: get-color(gray-900);
+    border-bottom: 1px solid get-color(gray-300);
+    position: relative;
+
+    [data-theme='dark'] & {
+      color: get-color(gray-100);
+      border-bottom-color: get-color(gray-600);
+    }
+  }
+
+  &__theme-toggle {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+  }
+
+  &__image {
+    width: 120px;
+    height: 120px;
+    border-radius: get-border-radius(full);
+    object-fit: cover;
+    border: 3px solid get-color(gray-800);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+    transition: transform 0.3s ease;
+
+    [data-theme='dark'] & {
+      border-color: get-color(gray-100);
+    }
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    @include media-down(md) {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  &__social-links {
+    @include flex-center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  &__social-link {
+    @include flex-center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid get-color(gray-800);
+    transition: all 0.3s ease;
+
+    img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+
+    &:hover {
+      transform: translateY(-3px) scale(1.1);
+    }
+  }
+
+  &__name {
+    color: get-color(gray-900);
+    line-height: 1.25;
+    font-size: get-font-size(3xl);
+
+    @include media-down(sm) {
+      font-size: get-font-size(2xl);
+    }
+
+    [data-theme='dark'] & {
+      color: get-color(gray-100);
+    }
+  }
+
+  &__bio {
+    @include text(base, regular, normal);
+    color: get-color(gray-900);
+    font-style: italic;
+
+    [data-theme='dark'] & {
+      color: get-color(gray-300);
+    }
+  }
+
+  &__pronouns {
+    @include text(base, medium, normal);
+    color: get-color(gray-900);
+
+    [data-theme='dark'] & {
+      color: get-color(gray-300);
+    }
+  }
+
+  &__section {
+    padding: 0 20px;
+
+    &-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 12px;
+      font-size: get-font-size(2xl);
+      font-weight: get-font-weight(medium);
+      border-bottom: 1px solid get-color(gray-300);
+
+      @include media-down(sm) {
+        font-size: get-font-size(xl);
+      }
+
+      [data-theme='dark'] & {
+        border-bottom-color: get-color(gray-600);
+      }
+    }
+
+    &-content {
+      padding: 20px 20px 0 20px;
+    }
+
+    &-icon {
+      @include flex-center;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      border: 1px solid get-color(gray-300);
+
+      @include media-down(sm) {
+        width: 32px;
+        height: 32px;
+      }
+    }
+  }
+
+  &__info-item,
+  &__contact-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    padding-bottom: 10px;
+  }
+
+  &__info-label,
+  &__contact-label {
+    font-weight: get-font-weight(medium);
+    color: get-color(gray-900);
+
+    [data-theme='dark'] & {
+      color: get-color(gray-100);
+    }
+  }
+
+  &__info-value,
+  &__contact-value {
+    color: get-color(gray-900);
+    display: flex;
+    flex-direction: column;
+    word-break: break-all;
+
+    [data-theme='dark'] & {
+      color: get-color(gray-300);
+    }
+  }
+
+  &__connections {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  &__connection-link {
+    color: get-color(gray-900);
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    @include flex-center;
+    border: 1px solid get-color(gray-300);
+
+    [data-theme='dark'] & {
+      color: get-color(gray-300);
+      border-color: get-color(gray-100);
+    }
+  }
+}
